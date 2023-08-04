@@ -1,0 +1,21 @@
+<div class="container">
+  <form [formGroup]="taskForm">
+    Description: <input type = "text" formControlName="description">
+    <fieldset>
+      <legend>Priority: </legend>
+      <div>
+        <input type="radio" id ="high" name ="priority" value ="high">
+        <label for ="high">High</label>
+      </div>
+      <div>
+        <input type="radio" id ="medium" name ="priority" value ="medium">
+        <label for ="medium">Medium</label>
+      </div>
+      <div>
+        <input type="radio" id ="low" name ="priority" value ="low">
+        <label for ="low">Low</label>
+      </div>
+    </fieldset>
+    Due: <input type="date" formControlName="due">
+  </form>
+</div>

@@ -1,8 +1,9 @@
-<div class="container">
+<div class="container" style="border:solid;">
+  <h1 style="color:orange">ToDo</h1>
   <form [formGroup]="taskForm">
     Description: <input type = "text" formControlName="description">
     <fieldset>
-      <legend>Priority: </legend>
+      <p>Priority: </p>
       <div>
         <input type="radio" id ="high" name ="priority" value ="high">
         <label for ="high">High</label>
@@ -17,5 +18,8 @@
       </div>
     </fieldset>
     Due: <input type="date" formControlName="due">
+    <br>
+    <br>
+    <input type="submit" value="add">
   </form>
 </div>

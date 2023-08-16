@@ -20,4 +20,8 @@ export class TaskCreateComponent implements OnInit{
   })
   }
 
+  addForm(){
+    console.log("add clicked");
+  }
+
 }

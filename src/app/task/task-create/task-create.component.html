@@ -1,25 +1,47 @@
-<div class="container" style="border:solid;">
+<div class="container" style="border:ridge;">
   <h1 style="color:orange">ToDo</h1>
-  <form [formGroup]="taskForm">
-    Description: <input type = "text" formControlName="description">
-    <fieldset>
-      <p>Priority: </p>
-      <div>
-        <input type="radio" id ="high" name ="priority" value ="high">
-        <label for ="high">High</label>
-      </div>
-      <div>
-        <input type="radio" id ="medium" name ="priority" value ="medium">
-        <label for ="medium">Medium</label>
-      </div>
-      <div>
-        <input type="radio" id ="low" name ="priority" value ="low">
-        <label for ="low">Low</label>
-      </div>
-    </fieldset>
-    Due: <input type="date" formControlName="due">
-    <br>
-    <br>
-    <input type="submit" value="add">
+  <form (ngSubmit) = "addForm()" [formGroup]="taskForm">
+      Description: <input type = "text" formControlName="description">
+      <div *ngIf = "taskForm.get('description').hasError('required')" style="color:red">
+        Please enter description
+     </div>
+      <fieldset>
+        <p>Priority: </p>
+        <div>
+          <input type="radio" id ="high" formControlName ="priority" value ="High">
+          <label for ="high">High</label>
+        </div>
+        <div>
+          <input type="radio" id ="medium" formControlName ="priority" value ="Medium">
+          <label for ="medium">Medium</label>
+        </div>
+        <div>
+          <input type="radio" id ="low" formControlName ="priority" [value] ="lowPriority">
+          <label for ="low">Low</label>
+        </div>
+      </fieldset>
+      Due: <input type="date" formControlName="due">
+      <br>
+      <br>
+      <button class="btn btn-primary" type="submit" [disabled]="!taskForm.valid">Add</button>
+
   </form>
+
+    <table style="border:darkblue" *ngIf="taskArray.length>0">
+      <h1 style="color:orange">
+        Task
+      </h1>
+      <tr *ngFor="let task of taskArray">
+        <td>
+          {{task.description}}
+        </td>
+        <td>
+          {{task.priority}}
+        </td>
+        <td>
+          {{task.due}}
+        </td>
+      </tr>
+    </table>
+
 </div>
